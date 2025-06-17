@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Trophy, Users, Calendar, ArrowRight, Star, Play, Shield, Zap, Target, Crown, ChevronRight, Bell, Gamepad2 } from 'lucide-react';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 const EsportsHomepage = () => {
   const [activeGame, setActiveGame] = useState(0);
@@ -168,35 +170,7 @@ const EsportsHomepage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Navigation */}
-      <nav className="bg-black/20 backdrop-blur-md border-b border-white/10 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-3">
-              <div className="bg-gradient-to-r from-purple-500 to-cyan-500 p-2 rounded-lg">
-                <Gamepad2 className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-2xl font-bold text-white">GameArena</span>
-            </div>
-            
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#tournaments" className="text-gray-300 hover:text-white transition-colors">Tournaments</a>
-              <a href="#games" className="text-gray-300 hover:text-white transition-colors">Games</a>
-              <a href="#leaderboard" className="text-gray-300 hover:text-white transition-colors">Leaderboard</a>
-              <a href="#about" className="text-gray-300 hover:text-white transition-colors">About</a>
-            </div>
-
-            <div className="flex items-center space-x-4">
-              <button className="text-gray-300 hover:text-white p-2">
-                <Bell className="w-5 h-5" />
-              </button>
-              <button className="bg-gradient-to-r from-purple-600 to-cyan-600 text-white px-6 py-2 rounded-lg hover:from-purple-700 hover:to-cyan-700 transition-all duration-300 font-semibold">
-                Join Now
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
+      <Header/>
       {/* Hero Section */}
       <section className="relative py-20 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-cyan-600/20"></div>
@@ -437,55 +411,7 @@ const EsportsHomepage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black/40 border-t border-white/10 py-12 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-3 mb-6">
-                <div className="bg-gradient-to-r from-purple-500 to-cyan-500 p-2 rounded-lg">
-                  <Gamepad2 className="w-6 h-6 text-white" />
-                </div>
-                <span className="text-2xl font-bold text-white">GameArena</span>
-              </div>
-              <p className="text-gray-400">The ultimate eSports tournament platform for competitive gaming.</p>
-            </div>
-            
-            <div>
-              <h4 className="text-white font-bold mb-4">Games</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Free Fire</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">BGMI</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">COD Mobile</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Valorant</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="text-white font-bold mb-4">Community</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Discord</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Forums</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Leaderboards</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Support</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="text-white font-bold mb-4">Company</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">About Us</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Terms of Service</a></li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="border-t border-white/10 mt-12 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 GameArena. All rights reserved. Made for gamers, by gamers.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer/>
     </div>
   );
 };
