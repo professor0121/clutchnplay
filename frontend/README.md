@@ -1,12 +1,207 @@
-# React + Vite
+# eSports Tournament Platform - Project Structure
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📁 Root Directory Structure
 
-Currently, two official plugins are available:
+```
+esports-tournament-platform/
+├── client/                          # React Frontend
+│   ├── public/
+│   │   ├── index.html
+│   │   ├── favicon.ico
+│   │   └── manifest.json
+│   ├── src/
+│   │   ├── components/              # Reusable UI components
+│   │   │   ├── common/
+│   │   │   │   ├── Header.jsx
+│   │   │   │   ├── Footer.jsx
+│   │   │   │   ├── Loader.jsx
+│   │   │   │   ├── Modal.jsx
+│   │   │   │   └── Notification.jsx
+│   │   │   ├── auth/
+│   │   │   │   ├── LoginForm.jsx
+│   │   │   │   ├── RegisterForm.jsx
+│   │   │   │   └── ProtectedRoute.jsx
+│   │   │   ├── tournaments/
+│   │   │   │   ├── TournamentCard.jsx
+│   │   │   │   ├── TournamentForm.jsx
+│   │   │   │   ├── TournamentBracket.jsx
+│   │   │   │   └── TournamentLeaderboard.jsx
+│   │   │   ├── teams/
+│   │   │   │   ├── TeamCard.jsx
+│   │   │   │   ├── TeamForm.jsx
+│   │   │   │   └── TeamInvite.jsx
+│   │   │   └── admin/
+│   │   │       ├── AdminSidebar.jsx
+│   │   │       ├── UserManagement.jsx
+│   │   │       └── TournamentManagement.jsx
+│   │   ├── pages/
+│   │   │   ├── Home.jsx
+│   │   │   ├── Login.jsx
+│   │   │   ├── Register.jsx
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── Tournaments.jsx
+│   │   │   ├── TournamentDetails.jsx
+│   │   │   ├── Profile.jsx
+│   │   │   ├── Teams.jsx
+│   │   │   ├── Leaderboard.jsx
+│   │   │   └── admin/
+│   │   │       ├── AdminDashboard.jsx
+│   │   │       ├── ManageUsers.jsx
+│   │   │       └── ManageTournaments.jsx
+│   │   ├── hooks/                   # Custom React hooks
+│   │   │   ├── useAuth.js
+│   │   │   ├── useSocket.js
+│   │   │   ├── useTournament.js
+│   │   │   └── useNotification.js
+│   │   ├── context/                 # React Context providers
+│   │   │   ├── AuthContext.js
+│   │   │   ├── SocketContext.js
+│   │   │   └── NotificationContext.js
+│   │   ├── services/                # API service functions
+│   │   │   ├── api.js
+│   │   │   ├── authService.js
+│   │   │   ├── tournamentService.js
+│   │   │   ├── teamService.js
+│   │   │   └── paymentService.js
+│   │   ├── utils/                   # Utility functions
+│   │   │   ├── constants.js
+│   │   │   ├── helpers.js
+│   │   │   ├── validation.js
+│   │   │   └── formatters.js
+│   │   ├── styles/                  # Global styles
+│   │   │   ├── globals.css
+│   │   │   └── components.css
+│   │   ├── assets/                  # Static assets
+│   │   │   ├── images/
+│   │   │   ├── icons/
+│   │   │   └── logos/
+│   │   ├── App.jsx
+│   │   └── index.js
+│   ├── package.json
+│   ├── tailwind.config.js
+│   └── vite.config.js
+│
+├── server/                          # Node.js Backend
+│   ├── src/
+│   │   ├── controllers/             # Route controllers
+│   │   │   ├── authController.js
+│   │   │   ├── userController.js
+│   │   │   ├── tournamentController.js
+│   │   │   ├── teamController.js
+│   │   │   ├── matchController.js
+│   │   │   ├── paymentController.js
+│   │   │   └── adminController.js
+│   │   ├── models/                  # Database models
+│   │   │   ├── User.js
+│   │   │   ├── Tournament.js
+│   │   │   ├── Team.js
+│   │   │   ├── Match.js
+│   │   │   ├── Payment.js
+│   │   │   └── Notification.js
+│   │   ├── routes/                  # API routes
+│   │   │   ├── auth.js
+│   │   │   ├── users.js
+│   │   │   ├── tournaments.js
+│   │   │   ├── teams.js
+│   │   │   ├── matches.js
+│   │   │   ├── payments.js
+│   │   │   └── admin.js
+│   │   ├── middleware/              # Custom middleware
+│   │   │   ├── auth.js
+│   │   │   ├── validation.js
+│   │   │   ├── errorHandler.js
+│   │   │   ├── rateLimiter.js
+│   │   │   └── roleCheck.js
+│   │   ├── services/                # Business logic services
+│   │   │   ├── authService.js
+│   │   │   ├── tournamentService.js
+│   │   │   ├── matchService.js
+│   │   │   ├── paymentService.js
+│   │   │   ├── emailService.js
+│   │   │   └── notificationService.js
+│   │   ├── utils/                   # Utility functions
+│   │   │   ├── constants.js
+│   │   │   ├── helpers.js
+│   │   │   ├── validation.js
+│   │   │   ├── jwt.js
+│   │   │   └── database.js
+│   │   ├── config/                  # Configuration files
+│   │   │   ├── database.js
+│   │   │   ├── jwt.js
+│   │   │   ├── email.js
+│   │   │   ├── payment.js
+│   │   │   └── socket.js
+│   │   ├── sockets/                 # Socket.IO handlers
+│   │   │   ├── index.js
+│   │   │   ├── tournamentSocket.js
+│   │   │   ├── matchSocket.js
+│   │   │   └── notificationSocket.js
+│   │   └── app.js
+│   ├── package.json
+│   └── server.js
+│
+├── shared/                          # Shared utilities (optional)
+│   ├── constants.js
+│   ├── types.js
+│   └── validation.js
+│
+├── docs/                           # Documentation
+│   ├── API.md
+│   ├── SETUP.md
+│   └── DEPLOYMENT.md
+│
+├── .gitignore
+├── README.md
+├── docker-compose.yml
+└── package.json (root)
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔧 Technology Stack
 
-## Expanding the ESLint configuration
+### Frontend
+- **React 18** with Vite for fast development
+- **Tailwind CSS** for modern, responsive styling
+- **React Router v6** for navigation
+- **Axios** for API calls
+- **Socket.IO Client** for real-time updates
+- **React Hook Form** for form handling
+- **React Query/SWR** for data fetching and caching
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Backend
+- **Node.js** with Express.js framework
+- **MongoDB** with Mongoose ODM (or PostgreSQL with Sequelize)
+- **Socket.IO** for real-time communication
+- **JWT** for authentication
+- **Bcrypt** for password hashing
+- **Multer** for file uploads
+- **Nodemailer** for email notifications
+- **Stripe/Razorpay** for payment processing
+
+### DevOps & Tools
+- **Docker** for containerization
+- **Redis** for session storage and caching
+- **PM2** for process management
+- **NGINX** for reverse proxy
+- **ESLint & Prettier** for code formatting
+
+## 🎮 Supported Games Configuration
+
+```javascript
+// Game configurations with specific rules
+const SUPPORTED_GAMES = {
+  FREE_FIRE: {
+    name: 'Free Fire',
+    maxTeamSize: 4,
+    tournamentTypes: ['Battle Royale', 'Clash Squad'],
+    platforms: ['Mobile']
+  },
+  BGMI: {
+    name: 'BGMI (Battlegrounds Mobile India)',
+    maxTeamSize: 4,
+    tournamentTypes: ['Classic', 'Arena'],
+    platforms: ['Mobile']
+  },
+  COD_MOBILE: {
+    name: 'Call of Duty: Mobile',
+    maxTeamSize: 5,
+    tournamentTypes: ['Multiplayer
